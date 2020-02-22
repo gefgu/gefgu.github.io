@@ -1,5 +1,5 @@
 #top-home-img {
-  height: 100%;
+  height: 100vh;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -33,14 +33,19 @@
 .home-centered-text {
   position: absolute;
   top: 40%;
-  left: 40%;
-  transform: translate(-50%, -50%);
+  left: 35%;
+  transform: translate(-40%, -35%);
 }
 
 .h1-home {
-  font-family: 'Poppins', ;
+  font-family: 'Noto Sans', ;
   color: white;
-  font-size: 3.5em;
-  text-shadow: 1px 1px 4px black;
+  font-size: 5em;
+  text-shadow: 1px 1px 2px black;
   font-weight: bold;
+}
+
+.about {
+  height: 80vh;
+  background: rgba(0, 0, 0, 0.05);
 }
