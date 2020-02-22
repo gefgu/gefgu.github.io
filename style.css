@@ -49,6 +49,7 @@
 }
 
 .about {
+  position: absolute;
   height: 80vh;
   background: rgba(0, 0, 0, 0.05);
   z-index: 1;
