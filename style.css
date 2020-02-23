@@ -131,3 +131,14 @@ body {
 .cell-2-width{
   grid-column: span 2;
 }
+
+@media (max-width: 1160px)
+{
+  .grid-projects {
+    grid-template: "1fr 1fr" 50vh
+                    "1fr 1fr" 50vh
+                    "1fr 1fr" 50vh
+                    "1fr 1fr" 50vh
+                    "1fr 1fr" 50vh;
+  }
+}
