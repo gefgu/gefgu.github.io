@@ -134,22 +134,6 @@ body {
 }
 
 @media (max-width: 960px){
-  .grid-projects {
-    grid-template: "1fr" 60vh
-                    "1fr" 60vh
-                    "1fr" 60vh
-                    "1fr" 60vh
-                    "1fr" 60vh;
-    background: white;
-  }
-  .cell-2-height{
-    grid-row: span 1;
-  }
-
-  .cell-2-width{
-    grid-column: span 1;
-  }
-
   .short-bio {
     width: 70%;
     font-size: 1.25em;
