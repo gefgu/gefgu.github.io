@@ -1,5 +1,6 @@
 var images_array = ['imgs/placeholder1.jpg', 'imgs/placeholder2.jpg',
-                  'imgs/placeholder3.jpg', 'imgs/placeholder4.jpg']
+                  'imgs/placeholder3.jpg', 'imgs/placeholder4.jpg',
+                'imgs/img-5.jpg']
 
 // Preload Images
 function preloadImages() {
