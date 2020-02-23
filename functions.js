@@ -1,16 +1,30 @@
+var images_array = ['imgs/placeholder1.jpg', 'imgs/placeholder2.jpg',
+                  'imgs/placeholder3.jpg', 'imgs/placeholder4.jpg']
+
+// Preload Images
+function preloadImages() {
+  for (x of images_array) {
+    var img = new Image();
+    img.src = x;
+  }
+}
+
+preloadImages();
+
+
 function change_image() {
   if (img_number == 1) {
-    $("#top-home-img").css("background-image", "url('imgs/placeholder1.jpg')");
+    $("#top-home-img").css("background-image", "url("+ images_array[0] +")");
     img_number++;
   } else if (img_number == 2) {
-    $("#top-home-img").css("background-image", "url('imgs/placeholder2.jpg')");
+    $("#top-home-img").css("background-image", "url("+ images_array[1] +")");
     img_number++;
   } else if (img_number == 3) {
-    $("#top-home-img").css("background-image", "url('imgs/placeholder3.jpg')");
+    $("#top-home-img").css("background-image", "url("+ images_array[2] +")");
     img_number++;
   }
   else if (img_number == 4) {
-    $("#top-home-img").css("background-image", "url('imgs/placeholder4.jpg')");
+    $("#top-home-img").css("background-image", "url("+ images_array[3] +")");
     img_number = 1;
   }
 }
