@@ -53,7 +53,7 @@ body {
 }
 
 .about {
-  position: absolute;
+  position: relative;
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
@@ -89,4 +89,45 @@ body {
 
 .short-bio p {
   font-size: 1.5em;
+}
+
+.projects {
+  position: relative;
+  width: 90%;
+  margin: auto;
+}
+
+.h2-centered {
+  font-size: 3em;
+  text-align: center;
+}
+
+.grid-projects {
+  width: 100%;
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template: "1fr 1fr 1fr" 40vh
+                  "1fr 1fr 1fr" 40vh
+                  "1fr 1fr 1fr" 40vh;
+  grid-gap: 5px;
+}
+
+.grid-projects .cell-project {
+  position: relative;
+}
+
+.grid-projects .cell-project img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cell-2-height{
+  grid-row: span 2;
+}
+
+.cell-2-width{
+  grid-column: span 2;
 }
