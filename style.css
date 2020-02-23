@@ -133,7 +133,7 @@ body {
   grid-column: span 2;
 }
 
-@media (max-width: 960px){
+@media (max-width: 1080px){
   .short-bio {
     width: 70%;
     font-size: 1.25em;
