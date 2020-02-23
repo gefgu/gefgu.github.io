@@ -109,7 +109,7 @@ body {
   grid-template: "1fr 1fr 1fr" 40vh
                   "1fr 1fr 1fr" 40vh
                   "1fr 1fr 1fr" 40vh;
-  grid-gap: 5px;
+  grid-gap: 10px;
 }
 
 .grid-projects .cell-project {
@@ -132,13 +132,34 @@ body {
   grid-column: span 2;
 }
 
-@media (max-width: 1160px)
-{
+@media (max-width: 1160px){
   .grid-projects {
     grid-template: "1fr 1fr" 50vh
                     "1fr 1fr" 50vh
                     "1fr 1fr" 50vh
                     "1fr 1fr" 50vh
                     "1fr 1fr" 50vh;
+  }
+
+  .short-bio {
+    width: 70%;
+  }
+}
+
+@media (max-width: 750px){
+  .grid-projects {
+    grid-template: "1fr" 60vh
+                    "1fr" 60vh
+                    "1fr" 60vh
+                    "1fr" 60vh
+                    "1fr" 60vh;
+  }
+
+  .cell-2-height{
+    grid-row: span 1;
+  }
+
+  .cell-2-width{
+    grid-column: span 1;
   }
 }
