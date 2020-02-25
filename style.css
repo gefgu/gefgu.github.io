@@ -137,5 +137,6 @@ body {
   .short-bio {
     width: 70%;
     font-size: 1.25em;
+    line-height: 35px;
   }
 }
