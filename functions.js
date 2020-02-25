@@ -42,13 +42,13 @@ $(window).scroll(function() {
 });
 
 $(window).scroll(function() {
-    if(document.getElementsByClassName("projects")[0].getBoundingClientRect()["y"] < 1200 && $(".projects").css("transform") == "matrix(0, 0, 0, 0, 0, 0)") {
+    if(document.getElementsByClassName("projects")[0].getBoundingClientRect()["y"] < 1400 && $(".projects").css("transform") == "matrix(0, 0, 0, 0, 0, 0)") {
       $(".projects").css("transform", "scale(1)")
     }
 });
 
 $(window).scroll(function() {
-    if(document.getElementsByClassName("hire-me")[0].getBoundingClientRect()["y"] < 1200 && $(".hire-me").css("transform") == "matrix(0, 0, 0, 0, 0, 0)") {
+    if(document.getElementsByClassName("hire-me")[0].getBoundingClientRect()["y"] < 900 && $(".hire-me").css("transform") == "matrix(0, 0, 0, 0, 0, 0)") {
       $(".hire-me").css("transform", "scale(1)")
     }
 });
