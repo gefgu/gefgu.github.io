@@ -112,17 +112,20 @@ body {
   grid-gap: 10px;
 }
 
-.grid-projects .cell-project {
+.cell-project {
   position: relative;
+  display: block;
+  overflow: hidden;
 }
 
-.grid-projects .cell-project img {
+.cell-project img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform .5s ease;
 }
 
 .cell-2-height{
@@ -131,6 +134,50 @@ body {
 
 .cell-2-width{
   grid-column: span 2;
+}
+
+.cell-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: .5s ease-in-out;
+}
+
+.cell-project:hover .cell-overlay {
+  opacity: 1;
+}
+
+.cell-project:hover > img {
+  -webkit-transform:scale(1.25); /* Safari and Chrome */
+  -moz-transform:scale(1.25); /* Firefox */
+  -ms-transform:scale(1.25); /* IE 9 */
+  -o-transform:scale(1.25); /* Opera */
+   transform:scale(1.25);
+}
+
+.project-text {
+  color: white;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.1em;
+}
+
+.project-text h3{
+  font-size: 3em;
+  padding: 30px;
+}
+
+.project-text .github-text {
+  font-weight: bold;
 }
 
 @media (max-width: 1080px){
