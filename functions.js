@@ -33,7 +33,6 @@ function change_image() {
 var img_number = 1;
 setInterval(change_image, 2500);
 
-// TODO: ADD HOVER EFFECT IN MOBILE
 // TODO: Load at scroll
 // TODO: Add the real PROJECTS
 // TODO: Send to Jean
