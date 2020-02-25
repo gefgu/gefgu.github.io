@@ -1,6 +1,6 @@
 var images_array = ['imgs/placeholder1.jpg', 'imgs/placeholder2.jpg',
                   'imgs/placeholder3.jpg', 'imgs/placeholder4.jpg',
-                'imgs/img-5.jpg']
+                'imgs/img-5.jpg', 'imgs/gustavo.jpg']
 
 // Preload Images
 function preloadImages() {
@@ -32,6 +32,27 @@ function change_image() {
 
 var img_number = 1;
 setInterval(change_image, 2500);
+
+// Scroll Load
+
+$(window).scroll(function() {
+    if(document.getElementsByClassName("about")[0].getBoundingClientRect()["y"] < 1200 && $(".about").css("transform") == "matrix(0, 0, 0, 0, 0, 0)") {
+      $(".about").css("transform", "scale(1)")
+    }
+});
+
+$(window).scroll(function() {
+    if(document.getElementsByClassName("projects")[0].getBoundingClientRect()["y"] < 1200 && $(".projects").css("transform") == "matrix(0, 0, 0, 0, 0, 0)") {
+      $(".projects").css("transform", "scale(1)")
+    }
+});
+
+$(window).scroll(function() {
+    if(document.getElementsByClassName("hire-me")[0].getBoundingClientRect()["y"] < 1200 && $(".hire-me").css("transform") == "matrix(0, 0, 0, 0, 0, 0)") {
+      $(".hire-me").css("transform", "scale(1)")
+    }
+});
+
 
 // TODO: Load at scroll
 // TODO: Add the real PROJECTS
