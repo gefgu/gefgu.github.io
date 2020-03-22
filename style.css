@@ -26,7 +26,7 @@ header {
   margin-bottom: -4px;
 }
 
-.carousel-item > img {
+.carousel-item>img {
   max-height: 93vh;
   object-fit: cover;
 }
@@ -34,7 +34,6 @@ header {
 .carousel-item p {
   font-size: 1.5em !important;
 }
-
 
 .about-text {
   width: 100%;
@@ -52,7 +51,7 @@ header {
   width: 80%;
 }
 
-.project-div p{
+.project-div p {
   font-size: 2.25rem !important;
 }
 
@@ -63,7 +62,6 @@ header {
 .parallax {
   /* Set a specific height */
   height: 600px;
-
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
@@ -119,7 +117,7 @@ input, textarea {
     font-size: 3.5rem;
   }
 
-  .project-div p{
+  .project-div p {
     font-size: 1.75rem !important;
   }
 
