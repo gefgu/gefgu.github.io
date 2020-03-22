@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap" rel="stylesheet">
   <!-- JS LIBRARIES  -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
   <!-- My Files -->
   <link rel="stylesheet" href="style.css">
@@ -20,16 +19,48 @@
 </head>
 
 <body>
+  <!-- ADD MENU WITH SMOOTH SCROLL -->
+  <!-- ADD CONTACT FORM -->
+
   <!-- HOME  -->
-  <div id="top-home-img" style="background-image: url('imgs/placeholder1.jpg');")>
-    <h1 class="home-centered-text h1-home">I'm <span id="typed"></span></h1>
-    <svg class="diagonal home-left" width="21%" height="170" viewBox="0 0 100 102" preserveAspectRatio="none">
-          <path d="M0 100 L100 100 L0 10 Z"></path>
-    </svg>
-    <svg class="diagonal home-right" width="80%" height="170" viewBox="0 0 100 102" preserveAspectRatio="none">
-          <path d="M0 100 L100 100 L100 10 Z"></path>
-    </svg>
+  <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-interval="3000">
+      <img src="imgs/placeholder1.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block mb-4">
+        <h2 class="display-2 font-weight-bold">I'm a Full-Stack Developer</h2>
+        <p class="lead p-4 my-2 font-weight-bold">Let's build a web app together!</p>
+      </div>
+    </div>
+    <div class="carousel-item" data-interval="3000">
+      <img src="imgs/placeholder2.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block mb-4">
+        <h2 class="display-2 font-weight-bold">I'm a Python Programmer</h2>
+        <p class="lead p-4 my-2 font-weight-bold">Let's automate the most tedious and repetitive tasks!</p>
+      </div>
+    </div>
+    <div class="carousel-item" data-interval="3000">
+      <img src="imgs/placeholder4.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block mb-4">
+        <h2 class="display-2 font-weight-bold">I'm a Freelancer</h2>
+        <p class="lead p-4 my-2 font-weight-bold">Let's work together in your tech project!.</p>
+      </div>
+    </div>
   </div>
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
   <!--  ABOUT  -->
   <div class="d-flex flex-wrap justify-content-between text-justify my-5 mx-auto py-4 w-75">
