@@ -23,21 +23,29 @@ a:hover {
   width: 100%;
 }
 
-.about-text p {
-  font-size: 1.75em !important;
+.about-text p, .carousel-item p {
+  font-size: 2.25rem !important;
+}
+
+.display-4 {
+  font-size: 5rem;
 }
 
 .project-div {
   width: 80%;
 }
 
-.project-div h3, .project-div p{
-  font-size: 1.5em !important;
+.project-div p{
+  font-size: 2.25rem !important;
+}
+
+.project-div h3 {
+  font-size: 4rem !important;
 }
 
 .parallax {
   /* Set a specific height */
-  height: 400px;
+  height: 600px;
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
@@ -76,5 +84,21 @@ a:hover {
 
   .project-div {
     width: 45%;
+  }
+
+  .parallax {
+    height: 400px;
+  }
+
+  .display-4 {
+    font-size: 3.5rem;
+  }
+
+  .project-div p{
+    font-size: 1.75rem !important;
+  }
+
+  .project-div h3 {
+    font-size: 2.5rem !important;
   }
 }
