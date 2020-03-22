@@ -13,7 +13,7 @@ html {
 }
 
 header, header h3 {
-  font-size: 2.5rem !important;
+  font-size: 2.25rem !important;
 }
 
 
@@ -132,7 +132,7 @@ input, textarea {
   }
 
   #contact-form {
-    width: 50% !important;
+    width: 40% !important;
   }
 
   header {
@@ -142,5 +142,9 @@ input, textarea {
 
   header h3 {
     font-size: 1.75rem !important;
+  }
+
+  input, textarea {
+    font-size: 1rem;
   }
 }
