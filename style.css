@@ -61,6 +61,10 @@ a:hover {
   height: 100%;
 }
 
+.parallax p {
+  font-size: 3rem;
+}
+
 #call1 {
   background-image: url("imgs/placeholder5.jpg");
 }
@@ -100,5 +104,9 @@ a:hover {
 
   .project-div h3 {
     font-size: 2.5rem !important;
+  }
+
+  .parallax p {
+    font-size: 2rem;
   }
 }
