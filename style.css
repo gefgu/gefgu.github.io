@@ -94,6 +94,10 @@ input, textarea, .form .btn {
   font-size: 1.5rem;
 }
 
+.form .btn {
+  font-size: 1.75rem;
+}
+
 @media only screen and (min-width: 992px) {
   .about-text {
     width: 50%;
@@ -146,5 +150,9 @@ input, textarea, .form .btn {
 
   input, textarea {
     font-size: 1rem;
+  }
+
+  .form .btn {
+    font-size: 1.25rem;
   }
 }
