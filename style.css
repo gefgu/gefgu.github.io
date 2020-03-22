@@ -14,25 +14,39 @@ a:hover {
   object-fit: cover;
 }
 
+.carousel-item p {
+  font-size: 1.5em !important;
+}
+
 
 .about-text {
-  width: 75%;
+  width: 100%;
+}
+
+.about-text p {
+  font-size: 1.75em !important;
 }
 
 @media only screen and (min-width: 992px) {
   .about-text {
     width: 50%;
   }
-}
 
-@media only screen and (max-width: 992px) {
-  p {
+  .about-text p {
     font-size: 1.5em !important;
+  }
+
+  .carousel-item p {
+    font-size: 1.25em !important;
   }
 }
 
 .project-div {
-  width: 45%;
+  width: 80%;
+}
+
+.project-div h3, .project-div p{
+  font-size: 1.5em !important;
 }
 
 .parallax {
