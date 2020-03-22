@@ -89,7 +89,7 @@ header, header h3 {
   background-image: url("imgs/placeholder3.jpg");
 }
 
-input, textarea {
+input, textarea, .form .btn {
   border: none;
   font-size: 1.5rem;
 }
