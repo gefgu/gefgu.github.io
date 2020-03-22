@@ -27,20 +27,6 @@ a:hover {
   font-size: 1.75em !important;
 }
 
-@media only screen and (min-width: 992px) {
-  .about-text {
-    width: 50%;
-  }
-
-  .about-text p {
-    font-size: 1.5em !important;
-  }
-
-  .carousel-item p {
-    font-size: 1.25em !important;
-  }
-}
-
 .project-div {
   width: 80%;
 }
@@ -73,4 +59,22 @@ a:hover {
 
 #call2 {
   background-image: url("imgs/placeholder3.jpg");
+}
+
+@media only screen and (min-width: 992px) {
+  .about-text {
+    width: 50%;
+  }
+
+  .about-text p {
+    font-size: 1.5em !important;
+  }
+
+  .carousel-item p {
+    font-size: 1.25em !important;
+  }
+
+  .project-div {
+    width: 45%;
+  }
 }
