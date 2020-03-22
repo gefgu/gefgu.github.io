@@ -26,12 +26,8 @@ a:hover {
 }
 
 @media only screen and (max-width: 992px) {
-  .about-text {
-    font-size: 1.2em;
-  }
-
-  .project-div {
-    font-size: 1.2em;
+  p {
+    font-size: 1.5em !important;
   }
 }
 
