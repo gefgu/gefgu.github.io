@@ -15,14 +15,26 @@
 
 <body>
   <!-- ADD MENU WITH SMOOTH SCROLL -->
-  <!-- ADD CONTACT FORM -->
 
-  <!-- HOME  -->
-  <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-ride="carousel">
+  <!-- NAVBAR  -->
+  <header class="bg-dark border-bottom border-dark p-3 position-sticky fixed-top">
+    <div class="inner text-light d-flex justify-content-around flex-wrap">
+      <h3 class="mx-2 mt-0 py-0 mb-1"><strong>Cover</strong></h3>
+      <nav class="nav jusify-content-center mx-2 my-0 py-0">
+        <a class="nav-link active text-light mx-3 px-0" href="#carousel"><b>Home</b></a>
+        <a class="nav-link text-muted mx-3 px-0" href="#about"><b>About</b></a>
+        <a class="nav-link text-muted mx-3 px-0" href="#projects"><b>Projects</b></a>
+        <a class="nav-link text-muted mx-3 px-0" href="#contact-form"><b>Contact</b></a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CAROUSEL  -->
+  <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
     <ol class="carousel-indicators">
-      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      <li data-target="#carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel" data-slide-to="1"></li>
+      <li data-target="#carousel" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active" data-interval="3000">
@@ -58,12 +70,12 @@
   </div>
 
   <!--  ABOUT  -->
-  <div class="d-flex flex-wrap justify-content-between text-justify my-5 mx-auto py-4 w-75">
+  <div class="d-flex flex-wrap justify-content-between text-justify my-5 mx-auto py-4 w-75" id="about">
     <div class="my-2 mx-auto">
       <img class="shadow my-4" src="imgs/gustavo.jpg" alt="" height="600px" width="auto">
     </div>
     <div class="m-auto p-4 m-4 about-text">
-      <h2 class="display-4 mb-4 text-left">Hi there, my name is Gustavo!</h2>
+      <h2 class="display-2 mb-4 text-left">Hi there, my name is Gustavo!</h2>
       <p class="lead mx-auto mt-2">I'm a Python Programmer and Full Stack Developer. By Python Programmer, I mean that I can develop a lot of projects, especially about web scraping. By Full Stack Developer, I mean that I can build the most useful
         and impressive websites.</p>
       <p class="lead text-muted mt-4">I have 15 years old and love programming!</p>
@@ -75,13 +87,15 @@
     <div class="parallax-darkening d-flex flex-wrap">
       <div class="text-center text-light container py-2 my-auto">
         <h3 class="display-4 my-5">Let's Create Something Together!</h3>
-        <a role="button" href="#" class="btn btn-outline-success btn-lg px-4 py-3 my-5"><p class="p-0 m-0 text-light">Hire Me!</p></a>
+        <a role="button" href="#contact-form" class="btn btn-outline-success btn-lg px-4 py-3 my-5">
+          <p class="p-0 m-0 text-light">Hire Me!</p>
+        </a>
       </div>
     </div>
   </div>
 
   <!-- PROJECTS  -->
-  <div class="text-center py-4 my-auto">
+  <div class="text-center py-4 my-auto" id="projects">
     <h2 class="display-4 py-4">Check out my latest work</h2>
     <div class="container py-4 m-auto d-flex flex-wrap justify-content-around">
       <div class="project-div shadow mb-5">
@@ -132,10 +146,33 @@
     <div class="parallax-darkening d-flex flex-wrap">
       <div class="text-center text-light container py-4 my-auto">
         <h3 class="display-4 my-5">I'm available for Freelancing!</h3>
-          <a role="button" href="#" class="btn btn-outline-success btn-lg px-4 py-3 my-5"><p class="p-0 m-0 text-light">Tell me about your project!</p></a>
+        <a role="button" href="#contact-form" class="btn btn-outline-success btn-lg px-4 py-3 my-5">
+          <p class="p-0 m-0 text-light">Tell me about your project!</p>
+        </a>
       </div>
     </div>
   </div>
+
+  <!-- Contact Form -->
+  <div class="container text-center shadow py-2 w-75" id="contact-form">
+    <h2 class="display-3 my-5">Contact Me!</h2>
+    <form class="form" method="post">
+      <div class="form-group">
+        <input type="text" name="cf_name" placeholder="Name" class="w-75 mx-4 border-bottom my-3 bg-light p-2">
+      </div>
+      <div class="form-group">
+        <input type="text" name="cf_email" placeholder="Email" class="w-75 mx-4 border-bottom my-3 bg-light p-2">
+      </div>
+      <div class="form-group">
+        <input type="text" name="cf_subject" placeholder="Subject" class="w-75 mx-4 border-bottom my-3 bg-light p-2">
+      </div>
+      <div class="form-group">
+        <textarea name="cf_message" rows="8" cols="80" class="w-75 my-3 bg-light p-2 border-bottom" placeholder="Message"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg my-4">Submit</button>
+    </form>
+  </div>
+
 
   <!-- Footer  -->
   <div class="bg-dark mt-5 py-1">

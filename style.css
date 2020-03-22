@@ -8,9 +8,26 @@ a:hover {
   text-decoration: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+header {
+  max-height: 7vh;
+}
+
+.nav-link {
+  transition: border-bottom 0.1s ease-in-out;
+}
+
+.nav-link:hover {
+  border-bottom: 4px solid white;
+  color: inherit;
+  margin-bottom: -4px;
+}
 
 .carousel-item > img {
-  max-height: 100vh;
+  max-height: 93vh;
   object-fit: cover;
 }
 
@@ -73,6 +90,10 @@ a:hover {
   background-image: url("imgs/placeholder3.jpg");
 }
 
+input, textarea {
+  border: none;
+}
+
 @media only screen and (min-width: 992px) {
   .about-text {
     width: 50%;
@@ -108,5 +129,9 @@ a:hover {
 
   .parallax p {
     font-size: 2rem;
+  }
+
+  #contact-form {
+    width: 50% !important;
   }
 }
