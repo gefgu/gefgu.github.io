@@ -6,6 +6,10 @@
   color: #111;
 }
 
+strong {
+  font-weight: 700;
+}
+
 /* ABOUT SECTION */
 .about .h1 {
   font-weight: 400;
@@ -19,5 +23,22 @@
 }
 
 .about img {
+  margin-bottom: 50px;
+}
+
+/* PROJECTS SECTION */
+.projects header {
+  margin-bottom: 100px;
+}
+
+.projects .project-thumbnail {
+  margin-bottom: 20px;
+}
+
+.projects .project-details h4{
+  margin-bottom: 15px;
+}
+
+.projects .project {
   margin-bottom: 50px;
 }
