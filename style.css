@@ -75,7 +75,7 @@ html {
 }
 
 .hero h1 {
-  line-height: 1.2em;
+  line-height: 1.4em;
   text-transform: capitalize;
   font-weight: 700;
 }
@@ -101,4 +101,14 @@ html {
 
 .hero .continue i {
   margin-right: 5px;
+}
+
+/* NAV SECTION */
+.header .nav-link {
+  padding: 5px;
+  margin: 5px;
+}
+
+.header .navbar-toggler {
+  border: none;
 }
