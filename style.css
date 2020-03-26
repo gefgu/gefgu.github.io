@@ -112,3 +112,46 @@ html {
 .header .navbar-toggler {
   border: none;
 }
+
+/* CONTACT SECTION */
+.contact {
+  padding: 100px 0;
+}
+
+.contact .email-info {
+  margin-top: 25px;
+}
+
+.contact h2 {
+  margin-bottom: 15px;
+}
+
+.contact button {
+  height: 60px;
+  padding: 0 30px;
+  line-height: 60px;
+  background: #111;
+  border: 1px solid #111;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 575px) {
+  .contact .email-info {
+    justify-content: space-around;
+  }
+
+  .contact button {
+      position: static;
+      width: 100%;
+      margin-top: 10px;
+  }
+}
+
+.contact .email {
+  color: inherit;
+  padding: 15px 50px;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  text-align: center;
+}
