@@ -155,3 +155,24 @@ html {
   opacity: 0;
   text-align: center;
 }
+
+/* FOOTER */
+.main-footer {
+  padding: 50px 50px 0;
+  color: #ddd;
+}
+
+.main-footer .social-menu {
+  margin-top: 15px;
+  padding-left: 0;
+}
+
+.main-footer .social-menu a{
+  color: inherit;
+  font-size: 1.5em;
+  padding: 5px;
+}
+
+.copyrights {
+  margin-top: 15px;
+}
