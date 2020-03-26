@@ -10,6 +10,10 @@ strong {
   font-weight: 700;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* ABOUT SECTION */
 .about .h1 {
   font-weight: 400;
@@ -19,7 +23,7 @@ strong {
 }
 
 .about {
-  padding: 75px 0;
+  padding: 100px 0;
 }
 
 .about img {
@@ -55,4 +59,46 @@ strong {
 
 .projects .project-links a{
   margin-top: 15px;
+}
+
+/* HERO SECTION */
+.hero {
+  background-image: url("imgs/placeholder7.jpg");
+  background-position: center center;
+  background-size: cover;
+  color: #fff;
+}
+
+.hero .container {
+  padding: 200px 20px;
+  position: relative;
+}
+
+.hero h1 {
+  line-height: 1.2em;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.hero-link {
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: 300;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.hero .continue {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  text-decoration: none !important;
+  color: inherit !important;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  opacity: 0.8;
+}
+
+.hero .continue i {
+  margin-right: 5px;
 }
