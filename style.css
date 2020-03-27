@@ -26,8 +26,11 @@ html {
   padding: 100px 0;
 }
 
-.about img {
-  margin-bottom: 50px;
+
+@media (max-width: 992px) {
+  .about img {
+    margin-bottom: 50px;
+  }
 }
 
 /* PROJECTS SECTION */
@@ -193,5 +196,5 @@ html {
 
 .quote p {
   color: #eee;
-  font-size: 1.5em;
+  font-size: 1.75em;
 }
