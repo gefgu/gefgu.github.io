@@ -149,10 +149,11 @@ html {
 }
 
 .contact .email {
+  visibility: hidden;
+  opacity: 0;
   color: inherit;
   padding: 15px 50px;
   transition: all 0.5s ease-in-out;
-  opacity: 0;
   text-align: center;
 }
 
@@ -175,4 +176,22 @@ html {
 
 .copyrights {
   margin-top: 15px;
+}
+
+/* QUOTE */
+.quote {
+  padding: 75px 0;
+}
+
+.quote h4 {
+  color: #999;
+  margin-bottom: 20px;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.quote p {
+  color: #eee;
+  font-size: 1.5em;
 }
