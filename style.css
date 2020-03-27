@@ -198,3 +198,27 @@ html {
   color: #eee;
   font-size: 1.75em;
 }
+
+/* MAIN POINTS */
+.main-points {
+  padding: 70px 0 50px;
+}
+
+.main-points h4{
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.main-points p {
+  color: #999;
+  font-size: 1.1em;
+  line-height: 1.5em;
+}
+
+.main-points div[class*="col-"] {
+  margin-bottom: 20px;
+}
+
+.main-points i {
+  margin-left: 10px;
+}
