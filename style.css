@@ -14,54 +14,14 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ABOUT SECTION */
-.about .h1 {
-  font-weight: 400;
-  padding: 20px 0;
-  text-transform: capitalize;
-  line-height: 1.4em;
+/* NAV SECTION */
+.header .nav-link {
+  padding: 5px;
+  margin: 5px;
 }
 
-.about {
-  padding: 100px 0;
-}
-
-
-@media (max-width: 992px) {
-  .about img {
-    margin-bottom: 50px;
-  }
-}
-
-/* PROJECTS SECTION */
-.projects {
-  padding: 75px 0;
-}
-
-.projects header {
-  margin-bottom: 100px;
-  color: #eee;
-}
-
-.projects .project-body h4{
-  margin-bottom: 15px;
-}
-
-.projects .project {
-  margin-bottom: 75px;
-}
-
-.projects .project-body p {
-  line-height: 1.8em;
-  margin-bottom: 15px;
-}
-
-.projects .project-links {
-  border-top: 1px solid #ccc;
-}
-
-.projects .project-links a{
-  margin-top: 15px;
+.header .navbar-toggler {
+  border: none;
 }
 
 /* HERO SECTION */
@@ -121,15 +81,99 @@ html {
   }
 }
 
-/* NAV SECTION */
-.header .nav-link {
-  padding: 5px;
-  margin: 5px;
+/* MAIN POINTS */
+.main-points {
+  padding: 70px 0 50px;
 }
 
-.header .navbar-toggler {
-  border: none;
+.main-points h4{
+  color: #fff;
+  margin-bottom: 10px;
 }
+
+.main-points p {
+  color: #999;
+  font-size: 1.1em;
+  line-height: 1.5em;
+}
+
+.main-points div[class*="col-"] {
+  margin-bottom: 20px;
+}
+
+.main-points i {
+  margin-left: 10px;
+}
+
+
+/* ABOUT SECTION */
+.about .h1 {
+  font-weight: 400;
+  padding: 20px 0;
+  text-transform: capitalize;
+  line-height: 1.4em;
+}
+
+.about {
+  padding: 100px 0;
+}
+
+
+@media (max-width: 992px) {
+  .about img {
+    margin-bottom: 50px;
+  }
+}
+
+/* QUOTE */
+.quote {
+  padding: 75px 0;
+}
+
+.quote h4 {
+  color: #999;
+  margin-bottom: 20px;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.quote p {
+  color: #eee;
+  font-size: 1.75em;
+}
+
+/* PROJECTS SECTION */
+.projects {
+  padding: 75px 0;
+}
+
+.projects header {
+  margin-bottom: 100px;
+  color: #eee;
+}
+
+.projects .project-body h4{
+  margin-bottom: 15px;
+}
+
+.projects .project {
+  margin-bottom: 75px;
+}
+
+.projects .project-body p {
+  line-height: 1.8em;
+  margin-bottom: 15px;
+}
+
+.projects .project-links {
+  border-top: 1px solid #ccc;
+}
+
+.projects .project-links a{
+  margin-top: 15px;
+}
+
 
 /* CONTACT SECTION */
 .contact {
@@ -194,46 +238,4 @@ html {
 
 .copyrights {
   margin-top: 15px;
-}
-
-/* QUOTE */
-.quote {
-  padding: 75px 0;
-}
-
-.quote h4 {
-  color: #999;
-  margin-bottom: 20px;
-  font-size: 0.9em;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.quote p {
-  color: #eee;
-  font-size: 1.75em;
-}
-
-/* MAIN POINTS */
-.main-points {
-  padding: 70px 0 50px;
-}
-
-.main-points h4{
-  color: #fff;
-  margin-bottom: 10px;
-}
-
-.main-points p {
-  color: #999;
-  font-size: 1.1em;
-  line-height: 1.5em;
-}
-
-.main-points div[class*="col-"] {
-  margin-bottom: 20px;
-}
-
-.main-points i {
-  margin-left: 10px;
 }
