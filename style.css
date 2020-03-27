@@ -100,10 +100,25 @@ html {
   text-transform: uppercase;
   font-size: 0.75em;
   opacity: 0.8;
+  animation: scroll 1.5s ease infinite;
 }
 
 .hero .continue i {
   margin-right: 5px;
+}
+
+@keyframes scroll {
+  0% {
+    bottom: 30px;
+  }
+
+  50% {
+    bottom: 25px;
+  }
+
+  100% {
+    bottom: 30px;
+  }
 }
 
 /* NAV SECTION */
