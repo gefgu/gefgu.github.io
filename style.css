@@ -107,17 +107,17 @@ html {
 }
 
 .main-points .point-plan:hover h4 {
-  color: #fccde2;
+  color: #faee1c;
   font-size: 2.5em;
 }
 
 .main-points .point-develop:hover h4 {
-  color: #b4f1f1;
+  color: #2d6cdf;
   font-size: 2.5em;
 }
 
 .main-points .point-deliver:hover h4 {
-  color: #43dde6;
+  color: #83e85a;
   font-size: 2.5em;
 }
 
