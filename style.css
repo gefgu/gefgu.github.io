@@ -341,3 +341,25 @@ html {
 .copyrights {
   margin-top: 15px;
 }
+
+/* BUTTON GO TOP */
+#btnGoTop {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 9999;
+  border: none;
+  outline: none;
+  background-color: #eee;
+  color: #111;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 1.5em;
+  opacity: 0.75;
+  transition: all 0.5s ease-in-out;
+}
+
+#btnGoTop:hover {
+  background-color: #999;
+}
