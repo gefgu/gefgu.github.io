@@ -170,12 +170,23 @@ html {
 }
 
 .projects .project {
-  background: #fafafa;
+  padding-left: 0;
+  padding-right: 0;
+  background: #f0f0f0;
 }
 
 .projects .project-thumbnail {
   padding-left: 0;
   padding-right: 0;
+  overflow: hidden;
+}
+
+.projects .project-thumbnail img{
+  transition: all 1.5s ease-in-out;
+}
+
+.projects .project-thumbnail:hover img{
+  transform: scale(1.25);
 }
 
 .projects .project-text {
