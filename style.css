@@ -100,8 +100,6 @@ html {
 
 .main-points div[class*="col-"] {
   margin-bottom: 20px;
-  opacity: 0;
-  transition: all 0.5s ease-in-out;
 }
 
 .main-points i {

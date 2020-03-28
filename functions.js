@@ -36,24 +36,3 @@ function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
-
-// FADE IN AT SCROLL
-function fadeInScroll(selector) {
-  elem = $(selector);
-
-  var docViewTop = $(window).scrollTop();
-  var docViewBottom = docViewTop + $(window).height();
-
-  var elemTop = $(elem).offset().top;
-  var elemBottom = elemTop + $(elem).height();
-
-  if (((elemBottom <= docViewBottom) && (elemTop >= docViewTop))) {
-    elem.css("opacity", "1");
-  }
-}
-console.log($(window).scrollTop() - $(".point-plan").first().height())
-$(window).scroll(function() {
-  fadeInScroll(".point-plan"),
-  fadeInScroll(".point-develop"),
-  fadeInScroll(".point-deliver")
-});
