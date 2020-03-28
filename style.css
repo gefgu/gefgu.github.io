@@ -100,6 +100,8 @@ html {
 
 .main-points div[class*="col-"] {
   margin-bottom: 20px;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
 }
 
 .main-points i {
@@ -121,7 +123,6 @@ html {
   font-size: 2.5em;
 }
 
-
 /* ABOUT SECTION */
 .about .h1 {
   font-weight: 400;
@@ -133,7 +134,6 @@ html {
 .about {
   padding: 100px 0;
 }
-
 
 @media (max-width: 992px) {
   .about img {
