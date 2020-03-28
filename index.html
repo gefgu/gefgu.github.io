@@ -273,14 +273,14 @@
       $(".email").css("visibility", "visible").css("opacity", "1");
     }
 
-    mybutton = document.getElementById("btnGoTop");
+    mybutton = $("#btnGoTop");
 
     window.onscroll = function () {scrollFunction()};
     function scrollFunction() {
       if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        mybutton.style.display = "block";
+        mybutton.css("visibility", "visible").css("opacity", "0.75");
       } else {
-        mybutton.style.display = "none";
+        mybutton.css("visibility", "hidden").css("opacity", "0");
       }
     }
 
