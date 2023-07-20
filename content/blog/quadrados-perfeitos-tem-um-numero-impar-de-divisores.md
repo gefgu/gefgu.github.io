@@ -1,7 +1,7 @@
 ---
 external: false
 title: "Quadrados Perfeitos Tem um Número Ímpar De Divisores"
-description: "Um importante fato para resolver problemas involvendo teoria dos números."
+description: "Um importante fato para resolver problemas envolvendo teoria dos números."
 date: 2023-07-20
 ---
 
