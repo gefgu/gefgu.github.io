@@ -29,7 +29,6 @@ if (isBuild) {
 
 export default defineConfig({
   server: { port: SERVER_PORT },
-  base: "/blog",
   site: BASE_URL,
   integrations: [
     sitemap(),
