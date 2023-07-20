@@ -68,6 +68,13 @@ export const config: Config = {
       render: "mark",
       children: nodes.strong.children,
     },
+    latex: {
+      render: "Latex",
+      attributes: {
+        formula: { type: String, required: true },
+      },
+      selfClosing: true,
+    },
     youtube: {
       render: "YouTubeEmbed",
       attributes: {

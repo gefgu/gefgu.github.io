@@ -7,6 +7,7 @@ import CodePenEmbed from "./CodePenEmbed.astro";
 import GitHubGistEmbed from "./GitHubGistEmbed.astro";
 import CodeBlock from "./CodeBlock.astro";
 import Heading from "./Heading.astro";
+import Latex from "./Latex.astro";
 
 type Props = {
   content: Content;
@@ -37,6 +38,10 @@ const components = {
   },
   GitHubGistEmbed: {
     Component: GitHubGistEmbed,
+    props: {},
+  },
+  Latex: {
+    Component: Latex,
     props: {},
   },
 };
