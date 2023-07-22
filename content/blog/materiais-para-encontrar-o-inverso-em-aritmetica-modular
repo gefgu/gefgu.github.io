@@ -1,0 +1,11 @@
+---
+external: false
+title: "Materiais Para Encontrar o Inverso de um Número em Aritmética Modular"
+description: "Materiais bem bacanas."
+date: 2023-07-20
+---
+
+Eu estava tentando resolver o [UVA10338](https://vjudge.net/problem/UVA-10338) e outros problemas interessantes que involviam calcular o inverso de um número em aritmética modular. Esses são os materiais que mais me ajudaram:
+
+- [Hora Júnior 14: Algoritmos de Teoria dos Números [Parte II] do Prof Leando Zatesko](https://youtu.be/_6cNFMS1NmY)
+- [Esse site de notas sobre teoria dos números de Stanford](https://crypto.stanford.edu/pbc/notes/numbertheory/division.html)
