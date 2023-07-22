@@ -1,6 +1,6 @@
 ---
 external: false
-title: "Truque para achar o expoente de um primo na fatoração de um fatorial"
+title: "Truque Para Achar o Expoente de um Primo na Fatoração de um Fatorial"
 description: "Materiais bem bacanas."
 date: 2023-07-22
 ---
@@ -11,7 +11,7 @@ Suponha que você queira saber o expoente do 3 na fatoração de 37!. Observe qu
 
 Ou seja, ficamos com um pequeno algoritmo para calcular o expoente de um primo na fatoração de um fatorial:
 
-```c++
+```cpp
 // Calcula o expoente do primo p na fatoração de n!
 int calculaExpoenteEmFatorial(int n, int p) {
   int expoente = 0;
