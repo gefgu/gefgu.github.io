@@ -1,0 +1,51 @@
+name: Sync gustavohsantos site
+
+on:
+  schedule:
+    - cron: "17 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this repository
+        uses: actions/checkout@v4
+
+      - name: Check out the upstream site
+        uses: actions/checkout@v4
+        with:
+          repository: gefgu/gustavohsantos
+          path: upstream
+          fetch-depth: 1
+
+      - name: Copy upstream site files
+        run: >-
+          rsync -a --delete
+          --exclude='.git'
+          --exclude='.github'
+          --exclude='upstream'
+          --exclude='node_modules'
+          --exclude='.astro'
+          --exclude='dist'
+          upstream/ ./
+
+      - name: Commit and push changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet && git diff --cached --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
+            echo "The site is already up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --all
+          git commit -m "Sync site from gefgu/gustavohsantos"
+          git push
+          gh workflow run deploy.yml --ref "${GITHUB_REF_NAME}"

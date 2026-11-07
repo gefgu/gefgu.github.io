@@ -1,0 +1,250 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  date: Date;
+  tags?: string[];
+  featureImage?: string;
+  backLink: string;
+  backText: string;
+  github?: string;
+  demo?: string;
+  // Publication-specific fields
+  authors?: string;
+  venue?: string;
+  pdfUrl?: string;
+  externalUrl?: string;
+  blogPostSlug?: string;
+}
+
+const {
+  title,
+  description,
+  date,
+  tags,
+  featureImage,
+  backLink,
+  backText,
+  github,
+  demo,
+  authors,
+  venue,
+  pdfUrl,
+  externalUrl,
+  blogPostSlug,
+} = Astro.props;
+---
+
+<article class="min-h-screen bg-base-100">
+  <div class="max-w-4xl mx-auto px-6 py-8 md:py-12">
+    <!-- Header -->
+    <header class="mb-8 md:mb-12">
+      <!-- Back Link -->
+      <div class="mb-6">
+        <a
+          href={backLink}
+          class="btn btn-ghost btn-sm gap-2 hover:gap-3 transition-all"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.42-1.41L7.83 13H20v-2z"
+            ></path>
+          </svg>
+          {backText}
+        </a>
+      </div>
+
+      <!-- Title and Meta -->
+      <div class="space-y-4">
+        <div
+          class="flex flex-col md:flex-row md:items-center md:justify-between gap-2"
+        >
+          <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+            {title}
+          </h1>
+        </div>
+
+        <div class="flex items-center gap-2 text-sm flex-wrap h-full w-48">
+          <time class="badge badge-primary h-full">
+            {
+              date.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+            }
+          </time>
+        </div>
+
+        {
+          description && (
+            <p class="text-lg md:text-xl text-base-content/70 leading-relaxed max-w-3xl">
+              {description}
+            </p>
+          )
+        }
+
+        {/* Publication-specific meta */}
+        {
+          authors && (
+            <div class="space-y-2">
+              <div class="text-base font-medium text-base-content/80">
+                <span class="font-semibold">Authors:</span> {authors}
+              </div>
+              {venue && (
+                <div class="text-base font-medium text-base-content/80">
+                  <span class="font-semibold">Venue:</span> {venue}
+                </div>
+              )}
+            </div>
+          )
+        }
+
+        <!-- {
+          authors && (
+            <div class="space-y-2">
+              <div class="text-base-content font-medium">
+                <span class="text-sm text-base-content/60 uppercase tracking-wide">
+                  Authors:
+                </span>{" "}
+                {authors}
+              </div>
+              {venue && (
+                <div class="text-primary font-medium italic">
+                  <span class="text-sm text-base-content/60 uppercase tracking-wide">
+                    Published in:
+                  </span>{" "}
+                  {venue}
+                </div>
+              )}
+            </div>
+          )
+        } -->
+
+        {
+          tags && tags.length > 0 && (
+            <div class="flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <span class="badge badge-secondary badge-sm md:badge-md">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )
+        }
+
+        {/* Action Buttons */}
+        {
+          (pdfUrl || externalUrl || blogPostSlug || github || demo) && (
+            <div class="flex flex-wrap gap-3 pt-4">
+              {pdfUrl && (
+                <a
+                  href={pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-primary btn-sm md:btn-md"
+                >
+                  <svg
+                    class="w-4 h-4 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                  </svg>
+                  PDF
+                </a>
+              )}
+              {externalUrl && (
+                <a
+                  href={externalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline btn-sm md:btn-md"
+                >
+                  <svg
+                    class="w-4 h-4 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
+                  </svg>
+                  Official Page
+                </a>
+              )}
+              {blogPostSlug && (
+                <a
+                  href={`/blog/${blogPostSlug}`}
+                  class="btn btn-secondary btn-sm md:btn-md"
+                >
+                  <svg
+                    class="w-4 h-4 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,16.5L18,9.5L16.59,8.09L11,13.67L7.91,10.59L6.5,12L11,16.5Z" />
+                  </svg>
+                  Deep Dive Blog Post
+                </a>
+              )}
+              {github && (
+                <a
+                  href={github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline btn-sm md:btn-md"
+                >
+                  <svg
+                    class="w-4 h-4 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                  </svg>
+                  GitHub
+                </a>
+              )}
+              {demo && (
+                <a
+                  href={demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline btn-sm md:btn-md"
+                >
+                  <svg
+                    class="w-4 h-4 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
+                  </svg>
+                  Demo
+                </a>
+              )}
+            </div>
+          )
+        }
+      </div>
+    </header>
+
+    <!-- Featured Image -->
+    {
+      featureImage && (
+        <figure class="mb-8 md:mb-12">
+          <img
+            src={featureImage}
+            alt={title}
+            class="w-full rounded-2xl shadow-xl object-cover max-h-96"
+            loading="lazy"
+          />
+        </figure>
+      )
+    }
+
+    <!-- Content -->
+    <div
+      class="prose dark:prose-invert prose-lg max-w-none prose-headings:font-bold prose-headings:text-primary prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-p:my-4 prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-ul:list-disc prose-ol:list-decimal prose-li:my-2 prose-blockquote:border-l-4 prose-blockquote:border-primary/50 prose-blockquote:bg-base-200/50 prose-blockquote:p-4 prose-blockquote:rounded-r prose-img:rounded-xl prose-img:shadow-md prose-code:bg-base-200 prose-code:p-1 prose-code:rounded prose-code:text-sm"
+    >
+      <slot />
+    </div>
+  </div>
+</article>

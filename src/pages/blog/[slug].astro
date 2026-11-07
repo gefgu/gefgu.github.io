@@ -1,52 +1,58 @@
 ---
-import { readOne, readAll } from "../../lib/markdoc/read";
-import { blog } from "../../lib/markdoc/frontmatter.schema";
-import Renderer from "../../components/Renderer.astro";
-import BlogPostMeta from "../../components/BlogPostMeta.astro";
-import ContentLayout from "../../layouts/ContentLayout.astro";
-import { SITE_URL } from "../../config";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import ArticleLayout from "../../components/ArticleLayout.astro";
+import ShareButtons from "../../components/ShareButtons.astro";
 
 export async function getStaticPaths() {
-  const posts = await readAll({
-    directory: "blog",
-    frontmatterSchema: blog,
+  const blogPosts = await getCollection("blog", ({ data }) => {
+    return data.draft !== true;
   });
-
-  // we don't want to generate pages for posts that link to external websites
-  const filteredPosts = posts
-    .filter((p) => p.frontmatter.draft !== true)
-    .filter(({ frontmatter }) => !frontmatter.external);
-
-  return filteredPosts.map((post) => {
-    return { params: { slug: post.slug } };
-  });
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
 }
 
-const { slug } = Astro.params;
-if (typeof slug !== "string") {
-  throw Error(`slug should be string. Received: ${slug}`);
+interface Props {
+  post: CollectionEntry<"blog">;
 }
 
-const { content, frontmatter } = await readOne({
-  directory: "blog",
-  slug,
-  frontmatterSchema: blog,
-});
+const { post } = Astro.props;
+const { Content } = await post.render();
 
-const ogImageAbsoluteUrl =
-  frontmatter.external !== true && frontmatter.ogImagePath
-    ? new URL(frontmatter.ogImagePath, SITE_URL).toString()
-    : undefined;
+// Calculate estimated reading time
+const wordsPerMinute = 200;
+const wordCount = post.body.split(" ").length;
+const readTime = Math.ceil(wordCount / wordsPerMinute);
 ---
 
-<ContentLayout title={frontmatter.title} date={frontmatter.date}>
-  <BlogPostMeta
-    title={frontmatter.title}
-    description={frontmatter.external ? undefined : frontmatter.description}
-    publishDate={frontmatter.date.toISOString()}
-    pagePath={`/blog/${slug}`}
-    ogImageAbsoluteUrl={ogImageAbsoluteUrl}
-    slot="meta"
-  />
-  <Renderer content={content} slot="content" />
-</ContentLayout>
+<BaseLayout
+  title={`${post.data.title} - Blog`}
+  description={post.data.description}
+  image={post.data.featureImage}
+>
+  <Navigation />
+
+  <main>
+    <ArticleLayout
+      title={post.data.title}
+      description={post.data.description}
+      date={post.data.date}
+      tags={post.data.tags}
+      featureImage={post.data.featureImage}
+      backLink="/blog"
+      backText="Back to Blog"
+      readTime={readTime}
+    >
+      <Content />
+    </ArticleLayout>
+
+    <ShareButtons title={post.data.title} url={Astro.url.href} />
+  </main>
+
+  <Footer />
+</BaseLayout>

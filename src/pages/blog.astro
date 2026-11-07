@@ -1,79 +1,224 @@
 ---
-import { readAll } from "../lib/markdoc/read";
-import { blog } from "../lib/markdoc/frontmatter.schema";
-import PageLayout from "../layouts/PageLayout.astro";
-import PageMeta from "../components/PageMeta.astro";
-import { SITE_TITLE } from "../config";
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 
-const posts = await readAll({
-  directory: "blog",
-  frontmatterSchema: blog,
+const blogPosts = await getCollection("blog", ({ data }) => {
+  return data.draft !== true;
 });
-
-const sortedPosts = posts
-  .filter((p) => p.frontmatter.draft !== true)
-  .sort(
-    (a, b) =>
-      new Date(b.frontmatter.date).valueOf() -
-      new Date(a.frontmatter.date).valueOf()
-  );
+const sortedPosts = blogPosts.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
 ---
 
-<PageLayout>
-  <PageMeta title={`Blog | ${SITE_TITLE}`} slot="meta" />
-  <section slot="main">
-    <ul>
-      {
-        sortedPosts.map((post) => {
-          const formattedDate = new Date(
-            post.frontmatter.date
-          ).toLocaleDateString("en-us", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          });
-          return (
-            <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
-              <div class="title">
-                {post.frontmatter.external ? (
-                  <a
-                    href={post.frontmatter.url}
-                    target="_blank"
-                    class="unset
-                        transition-[background-size] duration-300 
-                        bg-gradient-to-r bg-left-bottom bg-no-repeat
-                        bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px]
-                        from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue
-                      "
-                  >
-                    <span>{post.frontmatter.title}</span>
-                    <span>
-                      <i class="ml-1 mr-1 text-[12px] pb-2 fa-solid fa-up-right-from-square" />
-                    </span>
-                  </a>
-                ) : (
-                  <a
-                    href={`/blog/${post.slug}`}
-                    class="unset
-                        transition-[background-size] duration-300 
-                        bg-gradient-to-r bg-left-bottom bg-no-repeat
-                        bg-[length:0%_55%] hover:bg-[length:100%_55%] dark:bg-[length:0%_2px] hover:dark:bg-[length:100%_2px]
-                        from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue
-                      "
-                  >
-                    {post.frontmatter.title}
-                  </a>
-                )}
+<BaseLayout title="Blog - Gustavo H. Santos">
+  <Navigation />
+
+  <main class="min-h-screen bg-base-100">
+    <!-- Header Section -->
+    <section class="hero bg-base-200 py-16 md:py-20">
+      <div class="hero-content text-center max-w-4xl mx-auto px-6">
+        <div>
+          <h1
+            class="text-4xl md:text-6xl font-bold text-base-content mb-6 animate-fade-in"
+          >
+            Blog
+          </h1>
+          <p
+            class="text-lg md:text-xl text-base-content/70 max-w-3xl mx-auto leading-relaxed animate-slide-up"
+          >
+            Notes on conferences, research, and technical topics in urban
+            engineering and data science. Sharing insights, experiences, and
+            lessons learned from my journey.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="py-16 md:py-20 px-6">
+      <div class="max-w-7xl mx-auto">
+        {
+          sortedPosts.length > 0 ? (
+            <div class="space-y-8">
+              {/* Featured Post (First Post) */}
+              {sortedPosts.length > 0 && (
+                <article class="card lg:card-side bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 border border-base-300 group hover:-translate-y-1">
+                  {sortedPosts[0].data.featureImage && (
+                    <figure class="lg:w-1/2 overflow-hidden">
+                      <img
+                        src={sortedPosts[0].data.featureImage}
+                        alt={sortedPosts[0].data.title}
+                        class="w-full h-64 lg:h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </figure>
+                  )}
+
+                  <div class="card-body lg:w-1/2 p-8">
+                    <div class="space-y-4">
+                      <div class="flex items-center gap-2">
+                        <div class="badge badge-primary">Featured</div>
+                        <time class="badge badge-outline text-xs">
+                          {new Date(
+                            sortedPosts[0].data.date
+                          ).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          })}
+                        </time>
+                      </div>
+
+                      <h2 class="card-title text-2xl md:text-3xl font-bold leading-tight">
+                        <a
+                          href={`/blog/${sortedPosts[0].slug}`}
+                          class="link link-hover text-base-content hover:text-primary transition-colors"
+                        >
+                          {sortedPosts[0].data.title}
+                        </a>
+                      </h2>
+
+                      <p class="text-lg text-base-content/70 leading-relaxed">
+                        {sortedPosts[0].data.description}
+                      </p>
+
+                      {sortedPosts[0].data.tags && (
+                        <div class="flex flex-wrap gap-2">
+                          {sortedPosts[0].data.tags.slice(0, 4).map((tag) => (
+                            <span class="badge badge-secondary badge-sm">
+                              {tag}
+                            </span>
+                          ))}
+                          {sortedPosts[0].data.tags.length > 4 && (
+                            <span class="badge badge-ghost badge-sm">
+                              +{sortedPosts[0].data.tags.length - 4} more
+                            </span>
+                          )}
+                        </div>
+                      )}
+
+                      <div class="card-actions justify-start pt-2">
+                        <a
+                          href={`/blog/${sortedPosts[0].slug}`}
+                          class="btn btn-primary group/btn"
+                        >
+                          Read full post
+                          <svg
+                            class="w-4 h-4 ml-2 transition-transform group-hover/btn:translate-x-1"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              )}
+
+              {/* Other Posts Grid */}
+              {sortedPosts.length > 1 && (
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {sortedPosts.slice(1).map((post) => (
+                    <article class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 border border-base-300 group hover:-translate-y-1">
+                      {post.data.featureImage && (
+                        <figure class="relative overflow-hidden">
+                          <img
+                            src={post.data.featureImage}
+                            alt={post.data.title}
+                            class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy"
+                          />
+                        </figure>
+                      )}
+
+                      <div class="card-body p-6">
+                        <div class="space-y-4">
+                          <div class="space-y-3">
+                            <time class="badge badge-outline text-xs">
+                              {new Date(post.data.date).toLocaleDateString(
+                                "en-US",
+                                {
+                                  year: "numeric",
+                                  month: "long",
+                                  day: "numeric",
+                                }
+                              )}
+                            </time>
+
+                            <h3 class="card-title text-xl font-bold leading-tight">
+                              <a
+                                href={`/blog/${post.slug}`}
+                                class="link link-hover text-base-content hover:text-primary transition-colors"
+                              >
+                                {post.data.title}
+                              </a>
+                            </h3>
+                          </div>
+
+                          <p class="text-base-content/70 leading-relaxed line-clamp-3">
+                            {post.data.description}
+                          </p>
+
+                          {post.data.tags && (
+                            <div class="flex flex-wrap gap-2">
+                              {post.data.tags.slice(0, 3).map((tag) => (
+                                <span class="badge badge-secondary badge-sm">
+                                  {tag}
+                                </span>
+                              ))}
+                              {post.data.tags.length > 3 && (
+                                <span class="badge badge-ghost badge-sm">
+                                  +{post.data.tags.length - 3}
+                                </span>
+                              )}
+                            </div>
+                          )}
+
+                          <div class="card-actions justify-start pt-2">
+                            <a
+                              href={`/blog/${post.slug}`}
+                              class="btn btn-primary btn-sm group/btn"
+                            >
+                              Read more
+                              <svg
+                                class="w-4 h-4 ml-1 transition-transform group-hover/btn:translate-x-1"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z" />
+                              </svg>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <div class="hero min-h-96">
+              <div class="hero-content text-center">
+                <div class="max-w-md">
+                  <div class="text-6xl mb-4">🚀</div>
+                  <h3 class="text-2xl font-bold mb-4">Coming Soon!</h3>
+                  <p class="text-base-content/70">
+                    I'm working on some exciting blog posts. Check back soon for
+                    stories about conferences, research insights, and technical
+                    deep dives.
+                  </p>
+                </div>
               </div>
-              <div class="text-text-muted text-sm italic pt-1">
-                <time datetime={post.frontmatter.date.toISOString()}>
-                  {formattedDate}
-                </time>
-              </div>
-            </li>
-          );
-        })
-      }
-    </ul>
-  </section>
-</PageLayout>
+            </div>
+          )
+        }
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

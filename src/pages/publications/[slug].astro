@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import ArticleLayout from "../../components/ArticleLayout.astro";
+import ShareButtons from "../../components/ShareButtons.astro";
+
+export async function getStaticPaths() {
+  const publications = await getCollection("publications");
+  return publications.map((publication) => ({
+    params: { slug: publication.slug },
+    props: { publication },
+  }));
+}
+
+interface Props {
+  publication: CollectionEntry<"publications">;
+}
+
+const { publication } = Astro.props;
+const { Content } = await publication.render();
+---
+
+<BaseLayout
+  title={`${publication.data.title} - Publications`}
+  description={`${publication.data.title} by ${publication.data.authors}`}
+>
+  <Navigation />
+
+  <main>
+    <ArticleLayout
+      title={publication.data.title}
+      description={publication.data.title}
+      date={publication.data.date}
+      featureImage={publication.data.featureImage}
+      backLink="/publications"
+      backText="Back to Publications"
+      authors={publication.data.authors}
+      venue={publication.data.venue}
+      pdfUrl={publication.data.pdfUrl}
+      externalUrl={publication.data.externalUrl}
+      blogPostSlug={publication.data.blogPostSlug}
+    >
+      <Content />
+    </ArticleLayout>
+
+    <ShareButtons
+      title={`Publication: ${publication.data.title}`}
+      url={Astro.url.href}
+    />
+  </main>
+
+  <Footer />
+</BaseLayout>
