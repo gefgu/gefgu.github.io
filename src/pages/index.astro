@@ -1,38 +1,36 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
-import Timeline from "../components/Timeline.astro";
-import timelineItems from "../data/timelineItems.ts";
-import HeroSection from "../components/HeroSection.astro";
-import AboutSection from "../components/AboutSection.astro";
-import NewsSection from "../components/NewsSection.astro";
-import CallToAction from "../components/CallToAction.astro";
+import { getCollection } from "astro:content";
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import { HOME, SITE, SOCIALS } from "@consts";
+
+const posts = (await getCollection("blog"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title="Gustavo H. Santos - Urban Researcher & Engineer">
-  <Navigation />
-
-  <main class="min-h-screen">
-    <!-- Hero Section -->
-    <HeroSection />
-
-    <!-- About Section -->
-    <AboutSection />
-
-    <!-- Timeline Section -->
-    <section id="timeline" class="py-20 px-6 bg-base-200">
-      <div class="max-w-7xl mx-auto">
-        <Timeline items={timelineItems} />
-      </div>
-    </section>
-
-    <!-- News Section -->
-    <NewsSection />
-
-    <!-- Call to Action Section -->
-    <CallToAction />
-  </main>
-
-  <Footer />
-</BaseLayout>
+<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+    <img class="me animate" src="/profile.jpeg" alt={SITE.NAME} width="96" height="96" />
+    <h1 class="animate">{SITE.NAME}</h1>
+    <div class="prose-plain">
+      <p class="animate">
+        I'm a computer engineering student at UTFPR in Curitiba, Brazil, and an urban computing researcher, advised by Prof. Thiago H. Silva. I work on human mobility, explainable recommendation and LLM-based urban simulation, modeling how people choose and move between places in cities.
+      </p>
+      <p class="animate">
+        I make <a href="https://github.com/gefgu/fastmob">fastmob</a>, a fast, Rust-accelerated Python library for human mobility analysis. Try it with <code>pip install fastmob</code>, or read the <a href="https://gefgu.github.io/fastmob/">docs</a>. I also built <a href="https://github.com/gefgu/en-agentsociety">En-AgentSociety</a>, <a href="https://h3-cities.vercel.app">H3-Cities</a> and <a href="https://cityhood.vercel.app">CityHood</a>.
+      </p>
+      <p class="animate">
+        My papers have appeared at ACM SIGSPATIAL, NetMob, ASONAM, KDD, WebMedia and JISA. I won the 2025 Paraná Science and Technology Award and first place at WebMedia 2024. See <a href="/papers">all papers</a>.
+      </p>
+    </div>
+    <h2 class="animate">Writing</h2>
+    <ul class="list">
+      {posts.map((p) => (<li class="animate"><ArrowCard entry={p} /></li>))}
+    </ul>
+    <p class="animate">
+      Say hi: <a href={`mailto:${SITE.EMAIL}`}>email</a>{SOCIALS.map((s) => (<>, <a href={s.HREF}>{s.NAME}</a></>))}.
+    </p>
+  </Container>
+</PageLayout>

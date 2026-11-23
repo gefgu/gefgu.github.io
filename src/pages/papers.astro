@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import { PAPERS } from "@consts";
+
+const papers = (await getCollection("papers")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<PageLayout title={PAPERS.TITLE} description={PAPERS.DESCRIPTION}>
+  <Container>
+    <h1 class="animate">Papers</h1>
+    <ul class="pubs">
+      {papers.map((p) => (
+        <li class="animate">
+          <b>{p.data.title}</b><br />
+          <span class="meta">{p.data.authors}. {p.data.venue}, {p.data.date.getFullYear()}.</span>
+          {p.data.pdfUrl && <a href={p.data.pdfUrl}>pdf</a>}
+          {p.data.pdfUrl && p.data.externalUrl && " · "}
+          {p.data.externalUrl && <a href={p.data.externalUrl}>link</a>}
+        </li>
+      ))}
+    </ul>
+  </Container>
+</PageLayout>

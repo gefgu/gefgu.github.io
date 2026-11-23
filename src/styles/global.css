@@ -1,3 +1,234 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  overflow-y: scroll;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html,
+body {
+  @apply size-full;
+}
+
+:root {
+  --bg: #fdfdfc;
+  --fg: #1c1c1a;
+  --mut: #6b6b66;
+  --link: #0b5fd1;
+  --rule: #e4e3de;
+  --code: #f1f0ec;
+}
+html.dark {
+  --bg: #161617;
+  --fg: #e6e6e3;
+  --mut: #8f8f8a;
+  --link: #7ab0ff;
+  --rule: #2c2c2e;
+  --code: #202022;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  @apply antialiased flex flex-col;
+  font-family: ui-serif, Georgia, "Iowan Old Style", serif;
+  line-height: 1.65;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+header,
+footer,
+h4,
+h5,
+.font-semibold {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+header {
+  @apply py-8;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.95rem;
+  animation: fade-down 0.6s ease-out both;
+}
+header .site-name {
+  font-weight: 700;
+  color: var(--fg);
+  text-decoration: none;
+}
+header nav a {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+header nav a[aria-current="page"] {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+  text-decoration-color: var(--link);
+}
+@keyframes fade-down {
+  from { opacity: 0; transform: translateY(-6px); }
+}
+
+main {
+  @apply flex-1 py-10;
+}
+
+footer {
+  @apply py-8;
+  font-size: 0.85rem;
+  border-top: 1px solid var(--rule);
+  color: var(--mut);
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.15em;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+a:hover {
+  opacity: 0.75;
+}
+
+main p {
+  margin: 0 0 1em;
+}
+
+h1 {
+  font: 700 2rem/1.2 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  margin: 0.2rem 0 1rem;
+}
+h2 {
+  font: 700 1.15rem/1.3 ui-sans-serif, system-ui, sans-serif;
+  margin: 2.2rem 0 0.5rem;
+}
+.meta,
+time {
+  color: var(--mut);
+  font: 0.85rem ui-sans-serif, system-ui, sans-serif;
+}
+h2 .meta {
+  margin-left: 0.5rem;
+  font-weight: 400;
+}
+.me {
+  float: right;
+  width: 96px;
+  height: 96px;
+  margin: 0 0 0.5rem 1rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list .row {
+  display: flex;
+  gap: 1rem;
+  padding: 0.2rem 0;
+  text-decoration: none;
+}
+.list .row time {
+  min-width: 6.5rem;
+}
+.list .row span {
+  color: var(--link);
+  transition: transform 0.2s ease;
+}
+.list .row:hover span {
+  transform: translateX(4px);
+  text-decoration: underline;
+}
+.pubs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pubs li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+pre {
+  background: var(--code);
+  border-radius: 4px;
+  padding: 0.8rem 1rem;
+  overflow-x: auto;
+  font-size: 0.85em;
+}
+@media (max-width: 480px) {
+  html { font-size: 17px; }
+  .list .row { flex-direction: column; gap: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  header, .animate { animation: none; transition: none; }
+}
+header a,
+footer a {
+  color: inherit;
+}
+header nav a {
+  color: var(--mut);
+}
+header nav a:hover {
+  color: var(--fg);
+}
+
+code:not(pre code) {
+  background: var(--code);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  font-size: 0.85em;
+}
+.text-black,
+.dark\:text-white,
+.text-black\/50,
+.opacity-75 {
+  color: inherit;
+}
+.opacity-75 {
+  color: var(--mut);
+  opacity: 1;
+}
+
+article {
+  @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
+  --tw-prose-body: var(--fg);
+  --tw-prose-invert-body: var(--fg);
+  @apply prose-p:font-serif;
+  @apply prose-headings:font-sans;
+}
+
+@layer utilities {
+  article a {
+    color: var(--link);
+    @apply underline underline-offset-2;
+  }
+}
+
+.animate {
+  @apply opacity-0 translate-y-3;
+  @apply transition-all duration-700 ease-out;
+}
+
+.animate.show {
+  @apply opacity-100 translate-y-0;
+}
+
+html #back-to-top {
+  @apply opacity-0 pointer-events-none;
+}
+
+html.scrolled #back-to-top {
+  @apply opacity-100 pointer-events-auto;
+}

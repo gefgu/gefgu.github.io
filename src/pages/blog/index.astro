@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import { BLOG } from "@consts";
+
+const posts = (await getCollection("blog"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<PageLayout title={BLOG.TITLE} description={BLOG.DESCRIPTION}>
+  <Container>
+    <h1 class="animate">Writing</h1>
+    <ul class="list">
+      {posts.map((p) => (<li class="animate"><ArrowCard entry={p} /></li>))}
+    </ul>
+  </Container>
+</PageLayout>

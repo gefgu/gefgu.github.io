@@ -1,0 +1,24 @@
+---
+import { SITE } from "@consts";
+
+const { pathname } = Astro.url;
+const nav = [
+  { name: "About", href: "/" },
+  { name: "Writing", href: "/blog" },
+  { name: "Projects", href: "/projects" },
+  { name: "Papers", href: "/papers" },
+];
+const active = (href: string) =>
+  href === "/" ? pathname === "/" : pathname.startsWith(href);
+---
+
+<header>
+  <div class="mx-auto max-w-2xl px-5 flex flex-wrap justify-between items-baseline gap-x-6 gap-y-2">
+    <a href="/" class="site-name">{SITE.NAME}</a>
+    <nav class="flex gap-5">
+      {nav.map((n) => (
+        <a href={n.href} aria-current={active(n.href) ? "page" : undefined}>{n.name}</a>
+      ))}
+    </nav>
+  </div>
+</header>

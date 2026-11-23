@@ -1,16 +1,12 @@
 import { defineCollection, z } from "astro:content";
 
-const publications = defineCollection({
+const blog = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    authors: z.string(),
-    venue: z.string(),
-    date: z.date(),
-    featureImage: z.string().optional(),
-    pdfUrl: z.string().optional(),
-    externalUrl: z.string().optional(),
-    blogPostSlug: z.string().optional(),
+    description: z.string(),
+    date: z.coerce.date(),
+    draft: z.boolean().optional()
   }),
 });
 
@@ -18,30 +14,22 @@ const projects = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    description: z.string(),
-    date: z.date(),
-    featureImage: z.string().optional(),
-    tags: z.array(z.string()).optional(),
-    github: z.string().optional(),
-    demo: z.string().optional(),
-    featured: z.boolean().default(false),
+    url: z.string().optional(),
+    tag: z.string().optional(),
+    order: z.number().default(0),
   }),
 });
 
-const blog = defineCollection({
+const papers = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    description: z.string(),
-    date: z.date(),
-    featureImage: z.string().optional(),
-    tags: z.array(z.string()).optional(),
-    draft: z.boolean().default(false),
+    authors: z.string(),
+    venue: z.string(),
+    date: z.coerce.date(),
+    pdfUrl: z.string().optional(),
+    externalUrl: z.string().optional(),
   }),
 });
 
-export const collections = {
-  publications,
-  projects,
-  blog,
-};
+export const collections = { blog, projects, papers };

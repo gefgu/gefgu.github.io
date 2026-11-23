@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import { PROJECTS } from "@consts";
+
+const entries = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
+const projects = await Promise.all(
+  entries.map(async (e) => ({ ...e, Content: (await e.render()).Content }))
+);
+---
+
+<PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
+  <Container>
+    <h1 class="animate">Projects</h1>
+    {projects.map((p) => (
+      <section class="animate">
+        <h2>
+          {p.data.url ? <a href={p.data.url}>{p.data.title}</a> : p.data.title}
+          {p.data.tag && <span class="meta">{p.data.tag}</span>}
+        </h2>
+        <article><p.Content /></article>
+      </section>
+    ))}
+    <p class="animate">More on <a href="https://github.com/gefgu">GitHub</a>.</p>
+  </Container>
+</PageLayout>
